@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="761b3b82-48dc-41f6-a494-b75aa95080bd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:4000/SI.WS.Core/SIF/DocumentService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DocumentService.wsdl" MetadataType="Wsdl" ID="e4cb8eb3-598d-4492-b0e5-2907d800db0b" SourceId="1" SourceUrl="http://localhost:4000/SI.WS.Core/SIF/DocumentService.svc?wsdl" />
+    <MetadataFile FileName="DocumentService.xsd" MetadataType="Schema" ID="e494c3f1-a0a6-4f5e-8b29-6386b1227388" SourceId="1" SourceUrl="http://localhost:4000/SI.WS.Core/SIF/DocumentService.svc?xsd=xsd0" />
+    <MetadataFile FileName="DocumentService1.xsd" MetadataType="Schema" ID="6ca0f39a-47cd-4664-88b0-5363518020ec" SourceId="1" SourceUrl="http://localhost:4000/SI.WS.Core/SIF/DocumentService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DocumentService2.xsd" MetadataType="Schema" ID="677fd27b-1c40-4836-b4bd-1a62d80502d7" SourceId="1" SourceUrl="http://localhost:4000/SI.WS.Core/SIF/DocumentService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DocumentService.disco" MetadataType="Disco" ID="ed26e135-f525-4a59-84df-7c27cf348b30" SourceId="1" SourceUrl="http://localhost:4000/SI.WS.Core/SIF/DocumentService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

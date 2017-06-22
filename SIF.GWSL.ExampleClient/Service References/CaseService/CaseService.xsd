@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://software-innovation.com/SI.Data" elementFormDefault="qualified" targetNamespace="http://software-innovation.com/SI.Data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:4000/SI.WS.Core/SIF/CaseService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:4000/SI.WS.Core/SIF/CaseService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SI.Data.Contracts.WS" />
+  <xs:element name="Ping">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PingResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateCase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parameter" nillable="true" type="tns:CreateCaseParameter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="CreateCaseParameter">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CaseParameterBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CaseType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClosedDate" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateCaseParameter" nillable="true" type="tns:CreateCaseParameter" />
+  <xs:complexType name="CaseParameterBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ADContextUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccessCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccessGroup" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdditionalFields" nillable="true" type="tns:ArrayOfAdditionalFieldParameter" />
+      <xs:element minOccurs="0" name="ArchiveCodes" nillable="true" type="tns:ArrayOfClassCodeParameter" />
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contacts" nillable="true" type="tns:ArrayOfCaseContactParameter" />
+      <xs:element minOccurs="0" name="ExternalId" nillable="true" type="tns:ExternalIdParameter" />
+      <xs:element minOccurs="0" name="FiledOnPaper" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="JournalUnit" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Keywords" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Paragraph" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Project" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ReferringCases" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="tns:ArrayOfRemark" />
+      <xs:element minOccurs="0" name="ResponsibleEnterpriseNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResponsibleEnterpriseRecno" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ResponsiblePersonEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResponsiblePersonIdNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResponsiblePersonRecno" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ResponsiblePersonUserId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ScrapCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubArchive" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnofficialTitle" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaseParameterBase" nillable="true" type="tns:CaseParameterBase" />
+  <xs:complexType name="ArrayOfAdditionalFieldParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AdditionalFieldParameter" nillable="true" type="tns:AdditionalFieldParameter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAdditionalFieldParameter" nillable="true" type="tns:ArrayOfAdditionalFieldParameter" />
+  <xs:complexType name="AdditionalFieldParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdditionalFieldParameter" nillable="true" type="tns:AdditionalFieldParameter" />
+  <xs:complexType name="ArrayOfClassCodeParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClassCodeParameter" nillable="true" type="tns:ClassCodeParameter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClassCodeParameter" nillable="true" type="tns:ArrayOfClassCodeParameter" />
+  <xs:complexType name="ClassCodeParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ArchiveCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArchiveType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsManualText" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Sort" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClassCodeParameter" nillable="true" type="tns:ClassCodeParameter" />
+  <xs:complexType name="ArrayOfCaseContactParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CaseContactParameter" nillable="true" type="tns:CaseContactParameter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCaseContactParameter" nillable="true" type="tns:ArrayOfCaseContactParameter" />
+  <xs:complexType name="CaseContactParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContactId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsUnofficial" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ReferenceNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Role" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaseContactParameter" nillable="true" type="tns:CaseContactParameter" />
+  <xs:complexType name="ExternalIdParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExternalIdParameter" nillable="true" type="tns:ExternalIdParameter" />
+  <xs:complexType name="ArrayOfRemark">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Remark" nillable="true" type="tns:Remark" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRemark" nillable="true" type="tns:ArrayOfRemark" />
+  <xs:complexType name="Remark">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RemarkType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Remark" nillable="true" type="tns:Remark" />
+  <xs:element name="CreateCaseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SI.Data.Contracts.WS" minOccurs="0" name="CreateCaseResult" nillable="true" type="q3:CaseOperationResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="WSOperationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorDetails" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Successful" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WSOperationResult" nillable="true" type="tns:WSOperationResult" />
+  <xs:element name="GetCases">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parameter" nillable="true" type="tns:GetCasesQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="GetCasesQuery">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ADContextUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdditionalFields" nillable="true" type="tns:ArrayOfAdditionalFieldParameter" />
+      <xs:element minOccurs="0" name="ArchiveCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CaseNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactReferenceNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalId" nillable="true" type="tns:ExternalIdParameter" />
+      <xs:element minOccurs="0" name="IncludeReferringCases" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IncludeReferringDocuments" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaxReturnedCases" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProjectNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetCasesQuery" nillable="true" type="tns:GetCasesQuery" />
+  <xs:element name="GetCasesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCasesResult" nillable="true" type="tns:GetCasesResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="GetCasesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WSOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Cases" nillable="true" type="tns:ArrayOfCaseResult" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetCasesResult" nillable="true" type="tns:GetCasesResult" />
+  <xs:complexType name="ArrayOfCaseResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CaseResult" nillable="true" type="tns:CaseResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCaseResult" nillable="true" type="tns:ArrayOfCaseResult" />
+  <xs:complexType name="CaseResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccessCodeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccessCodeDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccessGroup" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArchiveCodes" nillable="true" type="tns:ArrayOfArchiveCodeResult" />
+      <xs:element minOccurs="0" name="CaseNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Documents" nillable="true" type="tns:ArrayOfCaseDocumentResult" />
+      <xs:element minOccurs="0" name="ExternalId" nillable="true" type="tns:ExternalIdParameter" />
+      <xs:element minOccurs="0" name="Paragraph" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recno" type="xs:int" />
+      <xs:element minOccurs="0" name="ReferringCases" nillable="true" type="tns:ArrayOfCaseCaseRelationResult" />
+      <xs:element minOccurs="0" name="ReferringDocuments" nillable="true" type="tns:ArrayOfCaseDocumentRelationResult" />
+      <xs:element minOccurs="0" name="ResponsibleEnterprise" nillable="true" type="tns:ResponsibleEnterprise" />
+      <xs:element minOccurs="0" name="ResponsibleEnterpriseName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResponsiblePerson" nillable="true" type="tns:ResponsiblePerson" />
+      <xs:element minOccurs="0" name="ResponsiblePersonName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaseResult" nillable="true" type="tns:CaseResult" />
+  <xs:complexType name="ArrayOfArchiveCodeResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ArchiveCodeResult" nillable="true" type="tns:ArchiveCodeResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfArchiveCodeResult" nillable="true" type="tns:ArrayOfArchiveCodeResult" />
+  <xs:complexType name="ArchiveCodeResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ArchiveCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArchiveType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArchiveCodeResult" nillable="true" type="tns:ArchiveCodeResult" />
+  <xs:complexType name="ArrayOfCaseDocumentResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CaseDocumentResult" nillable="true" type="tns:CaseDocumentResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCaseDocumentResult" nillable="true" type="tns:ArrayOfCaseDocumentResult" />
+  <xs:complexType name="CaseDocumentResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DocumentNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Files" nillable="true" type="tns:ArrayOfCaseDocumentFileResult" />
+      <xs:element minOccurs="0" name="Recno" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaseDocumentResult" nillable="true" type="tns:CaseDocumentResult" />
+  <xs:complexType name="ArrayOfCaseDocumentFileResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CaseDocumentFileResult" nillable="true" type="tns:CaseDocumentFileResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCaseDocumentFileResult" nillable="true" type="tns:ArrayOfCaseDocumentFileResult" />
+  <xs:complexType name="CaseDocumentFileResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Format" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recno" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaseDocumentFileResult" nillable="true" type="tns:CaseDocumentFileResult" />
+  <xs:complexType name="ArrayOfCaseCaseRelationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CaseCaseRelationResult" nillable="true" type="tns:CaseCaseRelationResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCaseCaseRelationResult" nillable="true" type="tns:ArrayOfCaseCaseRelationResult" />
+  <xs:complexType name="CaseCaseRelationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CaseRelation">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CaseCaseRelationResult" nillable="true" type="tns:CaseCaseRelationResult" />
+  <xs:complexType name="CaseRelation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RelationBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CaseNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CaseRelation" nillable="true" type="tns:CaseRelation" />
+  <xs:complexType name="RelationBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Relation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RelationBase" nillable="true" type="tns:RelationBase" />
+  <xs:complexType name="ArrayOfCaseDocumentRelationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CaseDocumentRelationResult" nillable="true" type="tns:CaseDocumentRelationResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCaseDocumentRelationResult" nillable="true" type="tns:ArrayOfCaseDocumentRelationResult" />
+  <xs:complexType name="CaseDocumentRelationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DocumentRelation">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CaseDocumentRelationResult" nillable="true" type="tns:CaseDocumentRelationResult" />
+  <xs:complexType name="DocumentRelation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RelationBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DocumentNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DocumentRelation" nillable="true" type="tns:DocumentRelation" />
+  <xs:complexType name="ResponsibleEnterprise">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ContactInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResponsibleEnterprise" nillable="true" type="tns:ResponsibleEnterprise" />
+  <xs:complexType name="ContactInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recno" type="xs:int" />
+      <xs:element minOccurs="0" name="Referencenumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContactInfo" nillable="true" type="tns:ContactInfo" />
+  <xs:complexType name="ResponsiblePerson">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ContactInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResponsiblePerson" nillable="true" type="tns:ResponsiblePerson" />
+  <xs:element name="UpdateCase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parameter" nillable="true" type="tns:UpdateCaseParameter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="UpdateCaseParameter">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CaseParameterBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CaseNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateCaseParameter" nillable="true" type="tns:UpdateCaseParameter" />
+  <xs:element name="UpdateCaseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SI.Data.Contracts.WS" minOccurs="0" name="UpdateCaseResult" nillable="true" type="q4:CaseOperationResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

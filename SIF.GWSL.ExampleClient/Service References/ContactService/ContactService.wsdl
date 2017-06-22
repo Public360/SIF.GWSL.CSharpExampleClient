@@ -1,0 +1,1261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://software-innovation.com/SI.Data" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ContactService" targetNamespace="http://software-innovation.com/SI.Data" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IContactService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <http:BasicAuthentication xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http" />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="BasicHttpBinding_IContactService1_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <http:NtlmAuthentication xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http" />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="BasicHttpBinding_IContactService2_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsoma:OptimizedMimeSerialization xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" />
+        <http:BasicAuthentication xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http" />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="BasicHttpBinding_IContactService3_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsoma:OptimizedMimeSerialization xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" />
+        <http:NtlmAuthentication xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http" />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:SecureConversationToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                  <wsp:Policy>
+                    <sp:RequireDerivedKeys />
+                    <sp:BootstrapPolicy>
+                      <wsp:Policy>
+                        <sp:SignedParts>
+                          <sp:Body />
+                          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+                        </sp:SignedParts>
+                        <sp:EncryptedParts>
+                          <sp:Body />
+                        </sp:EncryptedParts>
+                        <sp:SymmetricBinding>
+                          <wsp:Policy>
+                            <sp:ProtectionToken>
+                              <wsp:Policy>
+                                <sp:SpnegoContextToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                                  <wsp:Policy>
+                                    <sp:RequireDerivedKeys />
+                                  </wsp:Policy>
+                                </sp:SpnegoContextToken>
+                              </wsp:Policy>
+                            </sp:ProtectionToken>
+                            <sp:AlgorithmSuite>
+                              <wsp:Policy>
+                                <sp:Basic256 />
+                              </wsp:Policy>
+                            </sp:AlgorithmSuite>
+                            <sp:Layout>
+                              <wsp:Policy>
+                                <sp:Strict />
+                              </wsp:Policy>
+                            </sp:Layout>
+                            <sp:IncludeTimestamp />
+                            <sp:EncryptSignature />
+                            <sp:OnlySignEntireHeadersAndBody />
+                          </wsp:Policy>
+                        </sp:SymmetricBinding>
+                        <sp:Wss11>
+                          <wsp:Policy />
+                        </sp:Wss11>
+                        <sp:Trust10>
+                          <wsp:Policy>
+                            <sp:MustSupportIssuedTokens />
+                            <sp:RequireClientEntropy />
+                            <sp:RequireServerEntropy />
+                          </wsp:Policy>
+                        </sp:Trust10>
+                      </wsp:Policy>
+                    </sp:BootstrapPolicy>
+                  </wsp:Policy>
+                </sp:SecureConversationToken>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:EncryptSignature />
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_Ping_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_Ping_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_GetContactPersons_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_GetContactPersons_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_GetPrivatePersons_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_GetPrivatePersons_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_GetEnterprises_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_GetEnterprises_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_SynchronizePrivatePerson_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_SynchronizePrivatePerson_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_SynchronizeEnterprise_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_SynchronizeEnterprise_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_SynchronizeContactPerson_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IContactService_SynchronizeContactPerson_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://software-innovation.com/SI.Data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:element name="Ping">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PingResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetContactPersons">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="parameter" nillable="true" type="tns:GetContactPersonsParameter" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="GetContactPersonsParameter">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ADContextUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Active" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Categories" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Recno" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetContactPersonsParameter" nillable="true" type="tns:GetContactPersonsParameter" />
+      <xs:element name="GetContactPersonsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetContactPersonsResult" nillable="true" type="tns:GetContactPersonsResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="GetContactPersonsResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:WSOperationResult">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ContactPersons" nillable="true" type="tns:ArrayOfContactPersonBase" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetContactPersonsResult" nillable="true" type="tns:GetContactPersonsResult" />
+      <xs:complexType name="WSOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ErrorDetails" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Successful" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="WSOperationResult" nillable="true" type="tns:WSOperationResult" />
+      <xs:complexType name="ArrayOfContactPersonBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ContactPersonBase" nillable="true" type="tns:ContactPersonBase" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfContactPersonBase" nillable="true" type="tns:ArrayOfContactPersonBase" />
+      <xs:complexType name="ContactPersonBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Active" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Categories" nillable="true" type="q2:ArrayOfstring" />
+          <xs:element minOccurs="0" name="CustomNo1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomNo2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomNo3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Enterprise" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Gender" nillable="true" type="tns:Gender" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MobilePhone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PostAddress" nillable="true" type="tns:Address" />
+          <xs:element minOccurs="0" name="PrivateAddress" nillable="true" type="tns:Address" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ContactPersonBase" nillable="true" type="tns:ContactPersonBase" />
+      <xs:simpleType name="Gender">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Female" />
+          <xs:enumeration value="Male" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="Gender" nillable="true" type="tns:Gender" />
+      <xs:complexType name="Address">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="County" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StreetAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ZipPlace" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Address" nillable="true" type="tns:Address" />
+      <xs:element name="GetPrivatePersons">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="parameter" nillable="true" type="tns:GetPrivatePersonsParameter" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="GetPrivatePersonsParameter">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ADContextUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExternalID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PersonalIdNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Recno" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetPrivatePersonsParameter" nillable="true" type="tns:GetPrivatePersonsParameter" />
+      <xs:element name="GetPrivatePersonsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetPrivatePersonsResult" nillable="true" type="tns:GetPrivatePersonsResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="GetPrivatePersonsResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:WSOperationResult">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="PrivatePersons" nillable="true" type="tns:ArrayOfPrivatePersonBase" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetPrivatePersonsResult" nillable="true" type="tns:GetPrivatePersonsResult" />
+      <xs:complexType name="ArrayOfPrivatePersonBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="PrivatePersonBase" nillable="true" type="tns:PrivatePersonBase" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfPrivatePersonBase" nillable="true" type="tns:ArrayOfPrivatePersonBase" />
+      <xs:complexType name="PrivatePersonBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Active" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Categories" nillable="true" type="q3:ArrayOfstring" />
+          <xs:element minOccurs="0" name="CustomNo1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomNo2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomNo3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExternalID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Gender" nillable="true" type="tns:Gender" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MobilePhone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PersonalIdNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PostAddress" nillable="true" type="tns:Address" />
+          <xs:element minOccurs="0" name="PrivateAddress" nillable="true" type="tns:Address" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PrivatePersonBase" nillable="true" type="tns:PrivatePersonBase" />
+      <xs:element name="GetEnterprises">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="parameter" nillable="true" type="tns:GetEnterprisesParameter" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="GetEnterprisesParameter">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ADContextUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Active" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Categories" nillable="true" type="q4:ArrayOfstring" />
+          <xs:element minOccurs="0" name="EnterpriseNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExternalID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Recno" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetEnterprisesParameter" nillable="true" type="tns:GetEnterprisesParameter" />
+      <xs:element name="GetEnterprisesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetEnterprisesResult" nillable="true" type="tns:GetEnterprisesResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="GetEnterprisesResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:WSOperationResult">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Enterprises" nillable="true" type="tns:ArrayOfEnterpriseResult" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetEnterprisesResult" nillable="true" type="tns:GetEnterprisesResult" />
+      <xs:complexType name="ArrayOfEnterpriseResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="EnterpriseResult" nillable="true" type="tns:EnterpriseResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfEnterpriseResult" nillable="true" type="tns:ArrayOfEnterpriseResult" />
+      <xs:complexType name="EnterpriseResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:EnterpriseBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ContactRelations" nillable="true" type="tns:ArrayOfEnterpriseContactResult" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="EnterpriseResult" nillable="true" type="tns:EnterpriseResult" />
+      <xs:complexType name="EnterpriseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Active" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Categories" nillable="true" type="q5:ArrayOfstring" />
+          <xs:element minOccurs="0" name="CustomNo1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomNo2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomNo3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EnterpriseNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExternalID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Initials" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MobilePhone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OfficeAddress" nillable="true" type="tns:Address" />
+          <xs:element minOccurs="0" name="ParentEnterpriseNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PostAddress" nillable="true" type="tns:Address" />
+          <xs:element minOccurs="0" name="Telefax" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Web" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="EnterpriseBase" nillable="true" type="tns:EnterpriseBase" />
+      <xs:complexType name="ArrayOfEnterpriseContactResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="EnterpriseContactResult" nillable="true" type="tns:EnterpriseContactResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfEnterpriseContactResult" nillable="true" type="tns:ArrayOfEnterpriseContactResult" />
+      <xs:complexType name="EnterpriseContactResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="EnterpriseContactResult" nillable="true" type="tns:EnterpriseContactResult" />
+      <xs:element name="SynchronizePrivatePerson">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="parameter" nillable="true" type="tns:SynchronizePrivatePersonParameter" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="SynchronizePrivatePersonParameter">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:PrivatePersonBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ADContextUser" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="DataSource" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SynchronizePrivatePersonParameter" nillable="true" type="tns:SynchronizePrivatePersonParameter" />
+      <xs:element name="SynchronizePrivatePersonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="SynchronizePrivatePersonResult" nillable="true" type="tns:SynchronizePrivatePersonResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="SynchronizePrivatePersonResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:WSOperationResult">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Recno" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SynchronizePrivatePersonResult" nillable="true" type="tns:SynchronizePrivatePersonResult" />
+      <xs:element name="SynchronizeEnterprise">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="parameter" nillable="true" type="tns:SynchronizeEnterpriseParameter" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="SynchronizeEnterpriseParameter">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:EnterpriseBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ADContextUser" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ContactRelations" nillable="true" type="tns:ArrayOfContactContactParameter" />
+              <xs:element minOccurs="0" name="DataSource" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SynchronizeEnterpriseParameter" nillable="true" type="tns:SynchronizeEnterpriseParameter" />
+      <xs:complexType name="ArrayOfContactContactParameter">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ContactContactParameter" nillable="true" type="tns:ContactContactParameter" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfContactContactParameter" nillable="true" type="tns:ArrayOfContactContactParameter" />
+      <xs:complexType name="ContactContactParameter">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReferenceNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ContactContactParameter" nillable="true" type="tns:ContactContactParameter" />
+      <xs:element name="SynchronizeEnterpriseResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="SynchronizeEnterpriseResult" nillable="true" type="tns:SynchronizeEnterpriseResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="SynchronizeEnterpriseResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:WSOperationResult">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Recno" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SynchronizeEnterpriseResult" nillable="true" type="tns:SynchronizeEnterpriseResult" />
+      <xs:element name="SynchronizeContactPerson">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="parameter" nillable="true" type="tns:SynchronizeContactPersonParameter" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="SynchronizeContactPersonParameter">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ContactPersonBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ADContextUser" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="DataSource" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SynchronizeContactPersonParameter" nillable="true" type="tns:SynchronizeContactPersonParameter" />
+      <xs:element name="SynchronizeContactPersonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="SynchronizeContactPersonResult" nillable="true" type="tns:SynchronizeContactPersonResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="SynchronizeContactPersonResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:WSOperationResult">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Recno" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SynchronizeContactPersonResult" nillable="true" type="tns:SynchronizeContactPersonResult" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfstring">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IContactService_Ping_InputMessage">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="IContactService_Ping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContactService_GetContactPersons_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactPersons" />
+  </wsdl:message>
+  <wsdl:message name="IContactService_GetContactPersons_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactPersonsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContactService_GetPrivatePersons_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivatePersons" />
+  </wsdl:message>
+  <wsdl:message name="IContactService_GetPrivatePersons_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivatePersonsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContactService_GetEnterprises_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEnterprises" />
+  </wsdl:message>
+  <wsdl:message name="IContactService_GetEnterprises_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEnterprisesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContactService_SynchronizePrivatePerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:SynchronizePrivatePerson" />
+  </wsdl:message>
+  <wsdl:message name="IContactService_SynchronizePrivatePerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SynchronizePrivatePersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContactService_SynchronizeEnterprise_InputMessage">
+    <wsdl:part name="parameters" element="tns:SynchronizeEnterprise" />
+  </wsdl:message>
+  <wsdl:message name="IContactService_SynchronizeEnterprise_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SynchronizeEnterpriseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContactService_SynchronizeContactPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:SynchronizeContactPerson" />
+  </wsdl:message>
+  <wsdl:message name="IContactService_SynchronizeContactPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SynchronizeContactPersonResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IContactService">
+    <wsdl:operation name="Ping">
+      <wsdl:input wsaw:Action="http://software-innovation.com/SI.Data/IContactService/Ping" message="tns:IContactService_Ping_InputMessage" />
+      <wsdl:output wsaw:Action="http://software-innovation.com/SI.Data/IContactService/PingResponse" message="tns:IContactService_Ping_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactPersons">
+      <wsdl:input wsaw:Action="http://software-innovation.com/SI.Data/IContactService/GetContactPersons" message="tns:IContactService_GetContactPersons_InputMessage" />
+      <wsdl:output wsaw:Action="http://software-innovation.com/SI.Data/IContactService/GetContactPersonsResponse" message="tns:IContactService_GetContactPersons_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivatePersons">
+      <wsdl:input wsaw:Action="http://software-innovation.com/SI.Data/IContactService/GetPrivatePersons" message="tns:IContactService_GetPrivatePersons_InputMessage" />
+      <wsdl:output wsaw:Action="http://software-innovation.com/SI.Data/IContactService/GetPrivatePersonsResponse" message="tns:IContactService_GetPrivatePersons_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEnterprises">
+      <wsdl:input wsaw:Action="http://software-innovation.com/SI.Data/IContactService/GetEnterprises" message="tns:IContactService_GetEnterprises_InputMessage" />
+      <wsdl:output wsaw:Action="http://software-innovation.com/SI.Data/IContactService/GetEnterprisesResponse" message="tns:IContactService_GetEnterprises_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizePrivatePerson">
+      <wsdl:input wsaw:Action="http://software-innovation.com/SI.Data/IContactService/SynchronizePrivatePerson" message="tns:IContactService_SynchronizePrivatePerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://software-innovation.com/SI.Data/IContactService/SynchronizePrivatePersonResponse" message="tns:IContactService_SynchronizePrivatePerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeEnterprise">
+      <wsdl:input wsaw:Action="http://software-innovation.com/SI.Data/IContactService/SynchronizeEnterprise" message="tns:IContactService_SynchronizeEnterprise_InputMessage" />
+      <wsdl:output wsaw:Action="http://software-innovation.com/SI.Data/IContactService/SynchronizeEnterpriseResponse" message="tns:IContactService_SynchronizeEnterprise_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeContactPerson">
+      <wsdl:input wsaw:Action="http://software-innovation.com/SI.Data/IContactService/SynchronizeContactPerson" message="tns:IContactService_SynchronizeContactPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://software-innovation.com/SI.Data/IContactService/SynchronizeContactPersonResponse" message="tns:IContactService_SynchronizeContactPerson_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IContactService" type="tns:IContactService">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IContactService_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactPersons">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetContactPersons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivatePersons">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetPrivatePersons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEnterprises">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetEnterprises" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizePrivatePerson">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizePrivatePerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeEnterprise">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizeEnterprise" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeContactPerson">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizeContactPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IContactService1" type="tns:IContactService">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IContactService1_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactPersons">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetContactPersons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivatePersons">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetPrivatePersons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEnterprises">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetEnterprises" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizePrivatePerson">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizePrivatePerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeEnterprise">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizeEnterprise" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeContactPerson">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizeContactPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IContactService2" type="tns:IContactService">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IContactService2_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactPersons">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetContactPersons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivatePersons">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetPrivatePersons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEnterprises">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetEnterprises" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizePrivatePerson">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizePrivatePerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeEnterprise">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizeEnterprise" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeContactPerson">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizeContactPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IContactService3" type="tns:IContactService">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IContactService3_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactPersons">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetContactPersons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivatePersons">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetPrivatePersons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEnterprises">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetEnterprises" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizePrivatePerson">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizePrivatePerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeEnterprise">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizeEnterprise" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeContactPerson">
+      <soap:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizeContactPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSHttpBinding_IContactService" type="tns:IContactService">
+    <wsp:PolicyReference URI="#WSHttpBinding_IContactService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap12:operation soapAction="http://software-innovation.com/SI.Data/IContactService/Ping" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IContactService_Ping_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IContactService_Ping_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactPersons">
+      <soap12:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetContactPersons" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IContactService_GetContactPersons_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IContactService_GetContactPersons_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivatePersons">
+      <soap12:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetPrivatePersons" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IContactService_GetPrivatePersons_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IContactService_GetPrivatePersons_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEnterprises">
+      <soap12:operation soapAction="http://software-innovation.com/SI.Data/IContactService/GetEnterprises" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IContactService_GetEnterprises_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IContactService_GetEnterprises_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizePrivatePerson">
+      <soap12:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizePrivatePerson" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IContactService_SynchronizePrivatePerson_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IContactService_SynchronizePrivatePerson_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeEnterprise">
+      <soap12:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizeEnterprise" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IContactService_SynchronizeEnterprise_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IContactService_SynchronizeEnterprise_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeContactPerson">
+      <soap12:operation soapAction="http://software-innovation.com/SI.Data/IContactService/SynchronizeContactPerson" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IContactService_SynchronizeContactPerson_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IContactService_SynchronizeContactPerson_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ContactService">
+    <wsdl:port name="BasicHttpBinding_IContactService" binding="tns:BasicHttpBinding_IContactService">
+      <soap:address location="http://localhost:4000/SI.WS.Core/SIF/ContactService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IContactService1" binding="tns:BasicHttpBinding_IContactService">
+      <soap:address location="http://localhost:4000/SI.WS.Core/SIF/ContactService.svc/Basic" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IContactService2" binding="tns:BasicHttpBinding_IContactService1">
+      <soap:address location="http://localhost:4000/SI.WS.Core/SIF/ContactService.svc/Ntlm" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IContactService3" binding="tns:BasicHttpBinding_IContactService2">
+      <soap:address location="http://localhost:4000/SI.WS.Core/SIF/ContactService.svc/BasicMtom" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IContactService4" binding="tns:BasicHttpBinding_IContactService3">
+      <soap:address location="http://localhost:4000/SI.WS.Core/SIF/ContactService.svc/NtlmMtom" />
+    </wsdl:port>
+    <wsdl:port name="WSHttpBinding_IContactService" binding="tns:WSHttpBinding_IContactService">
+      <soap12:address location="http://localhost:4000/SI.WS.Core/SIF/ContactService.svc/WSWindows" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost:4000/SI.WS.Core/SIF/ContactService.svc/WSWindows</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>360service@demo.local</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

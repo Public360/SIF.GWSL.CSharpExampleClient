@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0cf252df-332c-4f6d-85f0-15db00446aa9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:4000/SI.WS.Core/SIF/CaseService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CaseService.xsd" MetadataType="Schema" ID="f1815254-bca3-4999-a6aa-1a0f4b3f1197" SourceId="1" SourceUrl="http://localhost:4000/SI.WS.Core/SIF/CaseService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CaseService1.xsd" MetadataType="Schema" ID="334cf41d-daa8-4f61-a5d3-5f5a45539899" SourceId="1" SourceUrl="http://localhost:4000/SI.WS.Core/SIF/CaseService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CaseService2.xsd" MetadataType="Schema" ID="3a336c42-88ff-4127-840c-a79ca182c330" SourceId="1" SourceUrl="http://localhost:4000/SI.WS.Core/SIF/CaseService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CaseService3.xsd" MetadataType="Schema" ID="28690791-d283-451e-bf28-2c9fd5c97461" SourceId="1" SourceUrl="http://localhost:4000/SI.WS.Core/SIF/CaseService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CaseService.wsdl" MetadataType="Wsdl" ID="3af01a55-9738-494b-af06-ee4dc4b52a8e" SourceId="1" SourceUrl="http://localhost:4000/SI.WS.Core/SIF/CaseService.svc?wsdl" />
+    <MetadataFile FileName="CaseService.disco" MetadataType="Disco" ID="74f6eec1-b0a0-4d77-a518-eabb513e12f4" SourceId="1" SourceUrl="http://localhost:4000/SI.WS.Core/SIF/CaseService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
