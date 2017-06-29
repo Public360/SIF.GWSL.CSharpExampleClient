@@ -1,7 +1,4 @@
-﻿using CaseService = SIF.GWL.ClientExample.CaseService;
-using ContactService = SIF.GWL.ClientExample.ContactService;
-using DocumentService = SIF.GWL.ClientExample.DocumentService;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
