@@ -73,6 +73,33 @@ namespace SIF.GWSL.ExampleClient
             }
         }
 
+        private static void ContactService_QuickAndDirtyTestMethod_UsingNtlm()
+        {
+
+            var contactClient = new ContactService.ContactServiceClient("NtlmHttpBinding_IContactService");
+
+            var createContactResult = contactClient.SynchronizePrivatePerson(new ContactService.SynchronizePrivatePersonParameter()
+            {
+                //ADContextUser = "domain\\someuser",   //Add to run as a different user than the integration user in 360.
+                ExternalID = "24079026111", //Your external ID which can be used for finding the same contact later. Can be any unique ID.
+                PersonalIdNumber = "24079026111",
+                FirstName = "Testfirstname",
+                LastName = "Testlastname",
+                Email = "tester@test.no",
+                MobilePhone = "+4711223344",
+                PostAddress = new ContactService.Address()
+                {
+                    StreetAddress = "Monrads gate 21B",
+                    ZipCode = "0564",
+                    ZipPlace = "Oslo",
+                    Country = "Norge"
+                }
+            });
+
+            Console.WriteLine("Create contact result: \n" + Newtonsoft.Json.JsonConvert.SerializeObject(createContactResult));
+
+        }
+
         private static void DocumentService_QuickAndDirtyTestMethod()
         {
             var documentClient = new DocumentService.DocumentServiceClient("BasicHttpBinding_IDocumentService");
